@@ -34,7 +34,7 @@ loginSubmitButton.addEventListener("click", async function (event) {
     const user = userCredential.user;
 
     // Redirect to youtube.com on successful login
-    window.location.href = "../BTCK2/Generator/generator.html";
+    window.location.href = "http://127.0.0.1:5500/Generator%20/generator.html";
   } catch (error) {
     // Display an error message
     console.error("Login error:", error.code, error.message);
