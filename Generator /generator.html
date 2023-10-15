@@ -193,7 +193,7 @@
     <script>
       const apiUrl = "http://api.omniinfer.io/v2/txt2img";
 
-      const apiKey = "7a154af8-2961-47e3-880f-272f24290053";
+      const apiKey = "b5c1c131-64aa-44b1-a556-2ee451a46174";
 
       function sendRequest() {
         const negativePrompt = document.getElementById("new-prompt").value;
@@ -274,6 +274,7 @@
                     document.getElementById("generated-image");
                   generatedImage.src = images[0];
                   generatedImage.alt = "Generated Image";
+                  
                 }
               } else if (status !== 2) {
                 setTimeout(() => {
