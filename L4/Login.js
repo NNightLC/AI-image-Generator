@@ -36,7 +36,7 @@ loginSubmitButton.addEventListener("click", async function (event) {
     const user = userCredential.user;
 
     // Redirect to youtube.com on successful login
-    window.location = "/Generator%20/generator.html";
+    window.location = "/Generator/generator.html";
   } catch (error) {
     // Display an error message
     displayErrorMessage(error);
