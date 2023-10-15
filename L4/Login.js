@@ -17,8 +17,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+
 // Get the login submit button element
 const loginSubmitButton = document.getElementById("logSubmit");
+loginSubmitButton.disabled = true; 
 
 // Add a click event listener to the login submit button
 loginSubmitButton.addEventListener("click", async function (event) {
@@ -37,10 +39,32 @@ loginSubmitButton.addEventListener("click", async function (event) {
     window.location.href = "http://127.0.0.1:5500/Generator%20/generator.html";
   } catch (error) {
     // Display an error message
-    console.error("Login error:", error.code, error.message);
+    displayErrorMessage(error);
+    loginSubmitButton.disabled = true;
 
-    // You can display the error message on your webpage by adding an HTML element for it, e.g., a <div>
-    const errorMessageDiv = document.getElementById("errorMessage");
-    errorMessageDiv.textContent = error.message; // Display the error message on the webpage
+// Set a timer to enable the button after 3 seconds
+setTimeout(function() {
+  loginSubmitButton.disabled = true;
+}, 3000);
+
   }
+
 });
+
+function displayErrorMessage(error) {
+  // Create a new element to display the error message
+  var errorMessage1 = document.createElement("p");
+  errorMessage1.textContent = "Error loging user: " + error.message;
+  errorMessage1.className = "error-message";
+
+  // Insert the error message element into the DOM
+  document.getElementById("logSubmit").insertAdjacentElement("afterend", errorMessage1);
+
+  // Remove the error message element after 3 seconds
+  setTimeout(function () {
+    errorMessage1.remove();
+  }, 1800);
+
+  // Log the error to the console
+  console.error("Error creating user:", error.code, error.message);
+}
